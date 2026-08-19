@@ -7,9 +7,9 @@
 use std::io;
 fn main() {
     println!("Hi, let's convert!");
+    println!("Input the value you want to convert, from Farenheit to Celsius");
     
     loop{
-        println!("Input the value you want to convert");
         let mut user_input = String::new();
 
         io::stdin()
@@ -19,17 +19,19 @@ fn main() {
         let user_input :f64 = match user_input.trim().parse(){
             Ok(num) => num,
             Err(_) => {
-                println!("Please input an actual number");
+                println!("Error, Please input an actual number");
                 continue;
             }
         };
 
-        let conversion_to_celsius: f64 = user_input - 32.0 * 5.0/9.0; 
+        let conversion_to_celsius: f64 = (user_input - 32.0) * 5.0/9.0; 
         println!(
             "Conversion complete
             Fahrenheit = {}
             Celsius = {}
             ", user_input, conversion_to_celsius
         );
+
+        println!("Type 'quit' to exit or press Enter to calculate another");
     }
 }
