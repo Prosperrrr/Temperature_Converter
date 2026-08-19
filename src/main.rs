@@ -23,6 +23,13 @@ fn main() {
                 continue;
             }
         };
-        println!("User inputted {}", user_input);
+
+        let conversion_to_celsius: f64 = user_input - 32.0 * 5.0/9.0; 
+        println!(
+            "Conversion complete
+            Fahrenheit = {}
+            Celsius = {}
+            ", user_input, conversion_to_celsius
+        );
     }
 }
