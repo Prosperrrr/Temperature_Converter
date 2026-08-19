@@ -9,7 +9,7 @@ fn main() {
     println!("Hi, let's convert!");
     println!("Input the value you want to convert, from Farenheit to Celsius");
     
-    loop{
+    'calculate: loop{
         let mut user_input = String::new();
 
         io::stdin()
@@ -33,5 +33,25 @@ fn main() {
         );
 
         println!("Type 'quit' to exit or press Enter to calculate another");
+
+        loop{
+        let mut user_response = String::new();
+
+        io::stdin()
+        .read_line(&mut user_response)
+        .expect("Failed to read the line");
+
+        let user_response = user_response.trim();
+        // println!("User responded with {}", user_response);
+        if user_response == "quit"{
+            println!("Okay, thank you for using me GG's");
+            break 'calculate;
+        }else if user_response == ""{
+            println!("Okay, Let's go again. Input the value you want to convert, from Farenheit to Celsius");
+            continue 'calculate;
+        }else{
+            println!("Wrong, Please type 'quit' to end or press Enter to continue");
+        }
+        }
     }
 }
