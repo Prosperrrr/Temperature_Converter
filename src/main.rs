@@ -7,13 +7,22 @@
 use std::io;
 fn main() {
     println!("Hi, let's convert!");
-    println!("Please input a number.");
+    
+    loop{
+        println!("Input the value you want to convert");
+        let mut user_input = String::new();
 
-    let mut user_input = String::new();
+        io::stdin()
+        .read_line(&mut user_input)
+        .expect("Failed to read the line");
 
-    io::stdin()
-    .read_line(&mut user_input)
-    .expect("Failed to input, check.");
-
-    println!("The User just typed {}", user_input)
+        let user_input :f64 = match user_input.trim().parse(){
+            Ok(num) => num,
+            Err(_) => {
+                println!("Please input an actual number");
+                continue;
+            }
+        };
+        println!("User inputted {}", user_input);
+    }
 }
